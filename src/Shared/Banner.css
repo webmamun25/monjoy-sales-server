@@ -1,0 +1,33 @@
+.bannermain{
+    
+    display: flex;
+    height: 680px;
+    
+    background-color: #212529;
+
+    
+
+}
+.bannerimage{
+    margin-top: 20px;
+    height: 485px;
+    
+    border:6px solid blanchedalmond;
+    
+}
+.bannerimage img{
+   height: 600px;
+   width: 100%;
+   position: relative;
+   left: 12%;
+   transform: rotate(-35deg);
+  
+}
+
+.content{
+    position: relative;
+    left: 10%;
+    top:10%;
+    
+    
+}

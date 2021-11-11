@@ -97,12 +97,9 @@ const Login = () => {
               </NavLink>
               {isLoading && <CircularProgress sx={{textAlign:"center"}}></CircularProgress>}
           
-          {user?.email && <Alert severity="success">This is a success alert — check it out!</Alert>}
-          {authError && <Alert severity="error">{authError} — check it out!</Alert>}
+          
         </form>
-        <p>-------------------Google Sign In-----------</p>
-        <Button sx={{width:"100%",mt:4}} onClick={handleGoogle} type="submit" variant="contained">Login</Button>
-        
+  
         
         </Grid>
         <Grid sx={{width:"100%"}}item xs={12} md={6}>
