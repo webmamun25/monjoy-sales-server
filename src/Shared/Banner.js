@@ -14,13 +14,13 @@ const Banner = () => {
        
             </Grid>
             <Grid className="content" sx={{color:"white"}} item xs={4} md={6}>
-              <h4 style={{fontSize:24 }}>  MONJOY IS ONLINE PLATFORM
+              <h4 style={{fontSize:32 }}>  MONJOY IS ONLINE PLATFORM
                <br /> BUY BEST CYCLE FROM MONJOY <br /></h4>
                 <p style={{fontSize:14 ,}}>Check out our new collection of bicycle 
-                <br />
+            
                 for Boys,Girls and Children
                 </p>
-                <Button variant="contained" sx={{backgroundColor:"yellow",color:"black"}}>Shop Now</Button>
+                <Button variant="contained" sx={{backgroundColor:"yellow",color:"black",mt:5}}>Shop Now</Button>
             </Grid>
            
             

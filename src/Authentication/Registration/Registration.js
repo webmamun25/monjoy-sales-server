@@ -17,12 +17,13 @@ import {
   import Visibility from '@mui/icons-material/Visibility';
   import VisibilityOff from '@mui/icons-material/VisibilityOff';
   
-  
+ 
   import { NavLink,useHistory } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
-const Register = () => {
-  const {user,registerUser,isLoading}=useAuth()
+const Registration = () => {
+  const {user,registerUser,isLoading,authError}=useAuth()
+  console.log(registerUser)
   const history = useHistory(); 
   const [values, setValues] = React.useState({
         amount: '',
@@ -31,8 +32,7 @@ const Register = () => {
         weightRange: '',
         showPassword: false,
       });
-    
- 
+
       
     const [newPass, setPass] = React.useState({
         amount: '',
@@ -141,15 +141,13 @@ const Register = () => {
           </form>}
           {isLoading && <CircularProgress sx={{textAlign:"center"}}></CircularProgress>}
           
-         
-         
+          {user?.email && <Alert severity="success">This is a success alert — check it out!</Alert>}
+          {authError && <Alert severity="error">{authError} — check it out!</Alert>}
           </Grid>
-          <Grid sx={{width:"100%"}} item xs={12} md={6}>
-            {/* <img src={login}  alt="" /> */}
-          </Grid>
+          
         </Grid>
       </Container>
     );
 };
 
-export default Register;
+export default Registration;

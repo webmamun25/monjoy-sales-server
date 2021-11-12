@@ -17,6 +17,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import PaymentIcon from '@mui/icons-material/Payment';
 import HomeIcon from '@mui/icons-material/Home';
 import ChromeReaderModeIcon from '@mui/icons-material/ChromeReaderMode';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
@@ -27,6 +28,7 @@ import useAuth from '../hooks/useAuth';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import ThumbsUpDownIcon from '@mui/icons-material/ThumbsUpDown';
 const drawerWidth = 240;
 
 
@@ -44,7 +46,7 @@ const Menubar = (props) => {
     setOpen(!open);
   };
   
-  const list = ['Home', 'About us', 'Explore','Dashboard',  'Login','Logout']
+  const list = ['Home', 'Advice', 'Explore','Dashboard', 'Myorders','Pay', 'Login','Logout',"Rating"]
   const drawer = (
     <div>
 
@@ -78,7 +80,7 @@ const Menubar = (props) => {
             </ListItemIcon>
             <ListItemText > 
             <NavLink
-                    to="/About"
+                    to="/Advice"
                     style={isActive => ({
                       color: isActive ? "green" : "blue",
                       textDecoration:"none"
@@ -109,7 +111,7 @@ const Menubar = (props) => {
             </ListItemText>
           </ListItem>
         }
-     
+      
       
         {
           user.email ? 
@@ -118,7 +120,7 @@ const Menubar = (props) => {
         <ListItemIcon>
           < PersonIcon/>
         </ListItemIcon> 
-        <ListItemText primary={user.displayName} />
+        <ListItemText primary={list[3]} />
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
@@ -127,8 +129,58 @@ const Menubar = (props) => {
             <ListItemIcon>
               <DashboardIcon />
             </ListItemIcon>
-            <ListItemText primary={list[3]} />
+
+            <NavLink
+                    to="/dashboard"
+                    style={isActive => ({
+                      color: isActive ? "green" : "blue",
+                      textDecoration:"none"
+                      
+                    })}
+                  >
+            <ListItemText primary={list[4]} />
+            </NavLink> 
           </ListItemButton>
+
+
+        
+          <ListItem button sx={{ pl: 4 }}  key={list[5]}>
+            <ListItemIcon>
+            <PaymentIcon></PaymentIcon>
+            </ListItemIcon>
+            <ListItemText > 
+            <NavLink
+                    to="/pay"
+                    style={isActive => ({
+                      color: isActive ? "green" : "blue",
+                      textDecoration:"none"
+                      
+                    })}
+                  >
+                  <Button > {list[5]} </Button> 
+            </NavLink>    
+            </ListItemText>
+          </ListItem>
+          <ListItem button sx={{ pl: 4 }}  key={list[8]}>
+            <ListItemIcon>
+             <ThumbsUpDownIcon></ThumbsUpDownIcon>
+            </ListItemIcon>
+            <ListItemText > 
+            <NavLink
+                    to="/rating"
+                    style={isActive => ({
+                      color: isActive ? "green" : "blue",
+                      textDecoration:"none"
+                      
+                    })}
+                  >
+                  <Button > {list[8]} </Button> 
+            </NavLink>    
+            </ListItemText>
+          </ListItem>
+        
+     
+
           <ListItemButton sx={{ pl: 4 }}>
             <ListItemIcon>
               <ExitToAppIcon />
