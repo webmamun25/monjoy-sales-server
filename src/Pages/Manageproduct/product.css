@@ -1,0 +1,19 @@
+.productform {
+    margin: 20px 30px;
+    width: 500px;
+  }
+  .productform form {
+    width: 500px;
+    margin-left: 500px;
+  }
+  
+  .productform form input {
+    padding: 10px;
+    display: block;
+    margin: 20px;
+  }
+  .productform form textarea {
+    margin-left: 20px;
+    width: 300px;
+  }
+  

@@ -7,11 +7,14 @@ const Dashboard = () => {
     const { user } = useAuth()
   const useremail = user.email
   const [allorder, setAllorder] = useState([])
+
+  
   useEffect(() => {
     fetch(`http://localhost:13000/mydashboard/${useremail}`)
       .then((res) => res.json())
       .then((data) => setAllorder(data))
   }, [useremail])
+  
 
   const handleDelete = (useremail, id) => {
     const agree = window.confirm('You take a risky decision')

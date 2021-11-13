@@ -17,6 +17,8 @@ import Order from './Pages/Order/Order';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import Pay from './Pages/Pay/Pay';
 import Advice from './Pages/Advice/Advice';
+import Makeadmin from './Pages/Makeadmin/Makeadmin';
+import Manageproduct from './Pages/Manageproduct/Manageproduct';
 function App() {
   return (
     <AuthProvider>
@@ -41,6 +43,15 @@ function App() {
         </Route>
         <Route exact path="/Advice">
           <Advice></Advice>
+        </Route>
+        <Route exact path="/makeadmin">
+        <Makeadmin></Makeadmin>
+        </Route>
+        <Route exact path="/manageorder">
+        
+        </Route>
+        <Route exact path="/manageproduct">
+      <Manageproduct></Manageproduct>
         </Route>
         <Route exact path="/login">
           <Login />

@@ -5,7 +5,7 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
-import { pink } from '@mui/material/colors';
+
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import PersonIcon from '@mui/icons-material/Person';
@@ -38,7 +38,7 @@ const Menubar = (props) => {
     const { window } = props;
     const [open, setOpen] = React.useState(true);
     const [mobileOpen, setMobileOpen] = React.useState(false);
-    const { user, logout } = useAuth();
+    const { user, logout,admin } = useAuth();
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -46,7 +46,7 @@ const Menubar = (props) => {
     setOpen(!open);
   };
   
-  const list = ['Home', 'Advice', 'Explore','Dashboard', 'Myorders','Pay', 'Login','Logout',"Rating"]
+  const list = ['Home', 'Advice', 'Explore','Dashboard', 'Myorders','Pay', 'Login','Logout',"Rating","MakeAdmin","Manage All Orders","Manage Products"]
   const drawer = (
     <div>
 
@@ -92,6 +92,93 @@ const Menubar = (props) => {
             </ListItemText>
           </ListItem>
         }
+
+      {
+        admin && <Box>
+
+        <ListItem button key={list[9]}>
+            <ListItemIcon>
+             <ChromeReaderModeIcon></ChromeReaderModeIcon>
+            </ListItemIcon>
+            <ListItemText > 
+            <NavLink
+                    to="/makeadmin"
+                    style={isActive => ({
+                      color: isActive ? "green" : "blue",
+                      textDecoration:"none"
+                      
+                    })}
+                  >
+                  <Button > {list[9]} </Button> 
+            </NavLink>    
+            </ListItemText>
+          </ListItem>
+          <ListItem button key={list[10]}>
+            <ListItemIcon>
+             <ChromeReaderModeIcon></ChromeReaderModeIcon>
+            </ListItemIcon>
+            <ListItemText > 
+            <NavLink
+                    to="/manageorder"
+                    style={isActive => ({
+                      color: isActive ? "green" : "blue",
+                      textDecoration:"none"
+                      
+                    })}
+                  >
+                  <Button > {list[10]} </Button> 
+            </NavLink>    
+            </ListItemText>
+          </ListItem>
+          <ListItem button key={list[11]}>
+            <ListItemIcon>
+             <ChromeReaderModeIcon></ChromeReaderModeIcon>
+            </ListItemIcon>
+            <ListItemText > 
+            <NavLink
+                    to="/manageproduct"
+                    style={isActive => ({
+                      color: isActive ? "green" : "blue",
+                      textDecoration:"none"
+                      
+                    })}
+                  >
+                  <Button > {list[11]} </Button> 
+            </NavLink>    
+            </ListItemText>
+          </ListItem>
+          
+
+          <ListItem button sx={{ pl: 4 }}  key={list[8]}>
+            <ListItemIcon>
+             <ThumbsUpDownIcon></ThumbsUpDownIcon>
+            </ListItemIcon>
+            <ListItemText > 
+            <NavLink
+                    to="/rating"
+                    style={isActive => ({
+                      color: isActive ? "green" : "blue",
+                      textDecoration:"none"
+                      
+                    })}
+                  >
+                  <Button > {list[8]} </Button> 
+            </NavLink>    
+            </ListItemText>
+          </ListItem>
+
+        </Box>
+
+
+
+
+      }
+
+
+      : 
+
+
+
       {
           <ListItem button key={list[2]}>
             <ListItemIcon>
@@ -192,7 +279,7 @@ const Menubar = (props) => {
 
           </Box>
           :
-          <ListItem button key={list[4]}>
+          <ListItem button key={list[6]}>
             <ListItemIcon>
             <LoginIcon></LoginIcon>
             </ListItemIcon>
@@ -205,7 +292,7 @@ const Menubar = (props) => {
                       
                     })}
                   >
-                  <Button > {list[4]} </Button> 
+                  <Button > {list[6]} </Button> 
             </NavLink>    
             </ListItemText>
           </ListItem>

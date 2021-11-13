@@ -1,152 +1,83 @@
-import React from 'react';
-import {
-  Alert,
-    Button,
-    CircularProgress,
-    Container,
-    FormControl,
-    Grid,
-    IconButton,
-    Input,
-    InputAdornment,
-    InputLabel,
-    TextField,
-    Typography,
-    
-  } from '@mui/material';
-  import Visibility from '@mui/icons-material/Visibility';
-  import VisibilityOff from '@mui/icons-material/VisibilityOff';
-  
- 
-  import { NavLink,useHistory } from 'react-router-dom';
+import { Container, Typography, TextField, Button, CircularProgress, Alert } from '@mui/material';
+import React, { useState } from 'react';
+import { Grid } from '@mui/material';
+import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
+import { NavLink, useHistory } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
+
 const Registration = () => {
-  const {user,registerUser,isLoading,authError}=useAuth()
-  console.log(registerUser)
-  const history = useHistory(); 
-  const [values, setValues] = React.useState({
-        amount: '',
-        password: '',
-        weight: '',
-        weightRange: '',
-        showPassword: false,
-      });
+    const [loginData, setLoginData] = useState({});
+    const history = useHistory();
+    const { user, registerUser, isLoading, authError } = useAuth();
 
-      
-    const [newPass, setPass] = React.useState({
-        amount: '',
-        password: '',
-        weight: '',
-        weightRange: '',
-        showPassword: false,
-      });
-      const loginhandler=e=>{
-        e.preventDefault()
-        if(values.password !== newPass.password){
-          alert("Your Password doesnot match")
-          return
+    const handleOnBlur = e => {
+        const field = e.target.name;
+        const value = e.target.value;
+        const newLoginData = { ...loginData };
+        newLoginData[field] = value;
+        setLoginData(newLoginData);
+    }
+    const handleLoginSubmit = e => {
+        if (loginData.password !== loginData.password2) {
+            alert('Please Check Your Password ');
+            return
         }
-
-        registerUser(values.email,values.password,values.name,history)
-        setValues({})
-        setPass({})
-        history.push('/login',{from:"Register"})
-        
-      }
-      const handleChange = (prop) => (event) => {
-        console.log(event.props)
-        setValues({ ...values, [prop]: event.target.value });
-      };
-      const handlePas = (prop) => (event) => {
-        console.log(event.props)
-        setPass({ ...values, [prop]: event.target.value });
-      };
-      const handleClickShowPassword = () => {
-        setValues({
-          ...values,
-          showPassword: !values.showPassword,
-        });
-        
-      };
-      const handleClickShow =()=>{
-        setPass({
-            ...newPass,
-            showPassword: !newPass.showPassword,
-          });
-      }
-      const handleMouseDownPassword = (event) => {
-        event.preventDefault();
-      };
-      const handleMouseDown =(event)=>{
-          event.preventDefault();
-      }
+        registerUser(loginData.email, loginData.password, loginData.name, history);
+        e.preventDefault();
+    }
     return (
-        <Container >
-        <Grid container >
-          <Grid item xs={12} sx={{ mt:8}} md={6}>
-          <Typography variant="body1" sx={{textAlign:"center"}} gutterBottom>
-            Registrtion Form
-          </Typography>
-          {!isLoading && <form action="" style={{marginTop:"50px"}} onSubmit={loginhandler}>
-             <TextField sx={{width:1,m:1}} id="standard-basic" label="Your Name" type="text" name="name" onChange={handleChange('name')} variant="standard" />
-             <TextField sx={{width:1,m:1}} id="standard-basic" label="Your Email" type="email" name="email" onChange={handleChange('email')} variant="standard" />
-  
-             <FormControl sx={{ width:1,m:1}}  variant="standard">
-            <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
-            <Input
-              id="standard-adornment-password"
-              type={values.showPassword ? 'text' : 'password'}
-              value={values.password}
-              onChange={handleChange('password')}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                  >
-                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-            />
-          </FormControl>
-             <FormControl sx={{ width:1,m:1}}  variant="standard">
-            <InputLabel htmlFor="standard-adornment-password2">Confirm Password</InputLabel>
-            <Input
-              id="standard-adornment-password2"
-              type={newPass.showPassword ? 'text' : 'password'}
-              value={newPass.password}
-              onChange={handlePas('password')}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShow}
-                    onMouseDown={handleMouseDown}
-                  >
-                    {newPass.showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-            />
-          </FormControl>
-                
-              <Button sx={{width:"100%",mt:4}}  type="submit" variant="contained">Register</Button>
-          
-              <NavLink style={{textDecoration:'none'}} to='/login'> 
-                  <Button>Already Registered ?Pleaser Login</Button>
-                </NavLink>
-          </form>}
-          {isLoading && <CircularProgress sx={{textAlign:"center"}}></CircularProgress>}
-          
-          {user?.email && <Alert severity="success">This is a success alert — check it out!</Alert>}
-          {authError && <Alert severity="error">{authError} — check it out!</Alert>}
-          </Grid>
-          
-        </Grid>
-      </Container>
+        <Container>
+            <Grid container spacing={2}>
+                <Grid item sx={{ mt: 8 }} xs={12} md={6}>
+                    <Typography variant="body1" sx={{marginLeft:5,color:"goldenrod"}}  gutterBottom> <AppRegistrationIcon></AppRegistrationIcon>   SIGN UP</Typography>
+                    {!isLoading && <form onSubmit={handleLoginSubmit}>
+                        <TextField
+                            sx={{ width: '75%', m: 1 }}
+                            id="standard-basic"
+                            label="Your Name"
+                            name="name"
+                            onBlur={handleOnBlur}
+                            variant="standard" />
+                        <TextField
+                            sx={{ width: '75%', m: 1 }}
+                            id="standard-basic"
+                            label="Your Email"
+                            name="email"
+                            type="email"
+                            onBlur={handleOnBlur}
+                            variant="standard" />
+                        <TextField
+                            sx={{ width: '75%', m: 1 }}
+                            id="standard-basic"
+                            label="Your Password"
+                            type="password"
+                            name="password"
+                            onBlur={handleOnBlur}
+                            variant="standard" />
+                        <TextField
+                            sx={{ width: '75%', m: 1 }}
+                            id="standard-basic"
+                            label="Confirm Password"
+                            type="password"
+                            name="password2"
+                            onBlur={handleOnBlur}
+                            variant="standard" />
+
+                        <Button sx={{ width: '75%', m: 1,background:"cyan",color:"steelblue" }} type="submit" >Register</Button>
+                        <NavLink
+                            style={{ textDecoration: 'none' }}
+                            to="/login">
+                            <Button variant="text">Already Registered? Please Login</Button>
+                        </NavLink>
+                    </form>}
+                    {isLoading && <CircularProgress />}
+                    {user?.email && <Alert severity="success">successfully Added</Alert>}
+                    {authError && <Alert severity="error">{authError}</Alert>}
+                </Grid>
+             
+            </Grid>
+        </Container>
     );
 };
 
