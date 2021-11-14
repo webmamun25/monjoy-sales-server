@@ -6,7 +6,7 @@ import './Category.css'
 const Categories = () => {
     const [category,setCategory] = useState([])
     useEffect(()=>{
-        fetch('http://localhost:13000/categories')
+        fetch('https://obscure-harbor-64328.herokuapp.com/categories')
         .then(res=>res.json())
         .then(data=>setCategory(data))
 

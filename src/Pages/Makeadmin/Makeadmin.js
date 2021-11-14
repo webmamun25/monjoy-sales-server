@@ -6,7 +6,7 @@ const Makeadmin = () => {
     const handleAdmin=(e)=>{
         e.preventDefault()
         const user = {email}
-        fetch('http://localhost:13000/users/admin',{
+        fetch('https://obscure-harbor-64328.herokuapp.com/users/admin',{
             method:"PUT",
             headers:{
                 'content-type':'application/json'

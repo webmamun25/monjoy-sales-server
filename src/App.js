@@ -24,10 +24,10 @@ function App() {
     <AuthProvider>
       <Router >
       <Switch>
-{        
+       
         <PrivateRoute path="/dashboard">
           <Dashboard />
-        </PrivateRoute> } *
+        </PrivateRoute> 
         <PrivateRoute path="/rating">
           <Ratingus></Ratingus>
         </PrivateRoute>
@@ -37,22 +37,22 @@ function App() {
         <PrivateRoute path="/order/:itemid">
           <Order></Order>
         </PrivateRoute>
-        <Route path="/users">{/* <Users /> */}</Route>
+        <PrivateRoute path="/users">{/* <Users /> */}</PrivateRoute>
         <Route exact path="/">
           <Home />
         </Route>
         <Route exact path="/Advice">
           <Advice></Advice>
         </Route>
-        <Route exact path="/makeadmin">
+        <privateRoute exact path="/makeadmin">
         <Makeadmin></Makeadmin>
-        </Route>
-        <Route exact path="/manageorder">
+        </privateRoute>
+        <privateRoute exact path="/manageorder">
         
-        </Route>
-        <Route exact path="/manageproduct">
+        </privateRoute>
+        <PrivateRoute exact path="/manageproduct">
       <Manageproduct></Manageproduct>
-        </Route>
+        </PrivateRoute>
         <Route exact path="/login">
           <Login />
         </Route>

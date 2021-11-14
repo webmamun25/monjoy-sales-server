@@ -10,7 +10,7 @@ const Dashboard = () => {
 
   
   useEffect(() => {
-    fetch(`http://localhost:13000/mydashboard/${useremail}`)
+    fetch(`https://obscure-harbor-64328.herokuapp.com/mydashboard/${useremail}`)
       .then((res) => res.json())
       .then((data) => setAllorder(data))
   }, [useremail])
@@ -20,7 +20,7 @@ const Dashboard = () => {
     const agree = window.confirm('You take a risky decision')
 
     if (agree) {
-      const url = `http://localhost:13000/myorders/${useremail}/${id}`
+      const url = `https://obscure-harbor-64328.herokuapp.com/myorders/${useremail}/${id}`
 
       fetch(url, {
         method: 'DELETE',

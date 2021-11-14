@@ -8,7 +8,7 @@ const Manageproduct = () => {
   
     const onSubmit = (data) => {
       axios
-        .post('http://localhost:13000/manageproduct', data)
+        .post('https://obscure-harbor-64328.herokuapp.com/manageproduct', data)
         .then((res) => {
           if (res.data.insertedId) {
             alert('successfull Addition thank You')

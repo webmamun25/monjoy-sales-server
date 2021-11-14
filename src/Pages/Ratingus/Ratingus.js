@@ -17,7 +17,7 @@ const Ratingus = () => {
       e.preventDefault()
         const given={...ratingvalue,Givenvalue}
             
-          fetch("http://localhost:13000/ratingus",{
+          fetch("https://obscure-harbor-64328.herokuapp.com/ratingus",{
             method:"POST",
             headers:{
               "content-type":"application/json"

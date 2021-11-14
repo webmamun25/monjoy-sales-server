@@ -13,7 +13,7 @@ const Order = () => {
     const[details,setDetails] = useState([])
     
     useEffect(()=>{
-        fetch('http://localhost:13000/categories')
+        fetch('https://obscure-harbor-64328.herokuapp.com/categories')
         .then(res=>res.json())
         .then(data=>setDetails(data))
 
@@ -25,7 +25,7 @@ const Order = () => {
            
        const onSubmit = (result,e) => {
         const item = {result,itemdetails}
-        fetch("http://localhost:13000/orderone",{
+        fetch("https://obscure-harbor-64328.herokuapp.com/orderone",{
             method:"POST",
             headers:{
               "content-type":"application/json"

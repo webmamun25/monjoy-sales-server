@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 const Ratingpage = () => {
     const [information,setInformation] = useState([])
     useEffect(()=>{
-        fetch('http://localhost:13000/found')
+        fetch('https://obscure-harbor-64328.herokuapp.com/found')
         .then(res=>res.json())
         .then(data=>setInformation(data))
     },[])
