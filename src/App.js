@@ -19,6 +19,7 @@ import Pay from './Pages/Pay/Pay';
 import Advice from './Pages/Advice/Advice';
 import Makeadmin from './Pages/Makeadmin/Makeadmin';
 import Manageproduct from './Pages/Manageproduct/Manageproduct';
+import Manage from './Pages/Manageorder/Manage';
 function App() {
   return (
     <AuthProvider>
@@ -48,7 +49,7 @@ function App() {
         <Makeadmin></Makeadmin>
         </privateRoute>
         <privateRoute exact path="/manageorder">
-        
+        <Manage></Manage>
         </privateRoute>
         <PrivateRoute exact path="/manageproduct">
       <Manageproduct></Manageproduct>

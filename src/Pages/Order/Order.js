@@ -7,6 +7,7 @@ import Menubar from '../../Shared/Menubar';
 import useAuth from '../../hooks/useAuth';
 const Order = () => {
     const {user} = useAuth()
+    const [pending,setPending] = useState("Pending")
     const { register, handleSubmit } = useForm();
     const location = useHistory()
     const {itemid} =useParams()
@@ -24,7 +25,7 @@ const Order = () => {
        const itemdetails = details.find((detail) => detail._id === itemid)
            
        const onSubmit = (result,e) => {
-        const item = {result,itemdetails}
+        const item = {result,itemdetails,pending}
         fetch("https://obscure-harbor-64328.herokuapp.com/orderone",{
             method:"POST",
             headers:{
@@ -88,6 +89,7 @@ const Order = () => {
   </Grid>
   
 </Grid>
+
 </>
     );
 };
